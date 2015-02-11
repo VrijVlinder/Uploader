@@ -13,6 +13,7 @@ $PluginInfo['Uploader'] = array(
    'Plugins.Attachments.Download.Allow' => 'Garden.Profiles.Edit'),
    //'SettingsUrl' => '/dashboard/plugin/Uploader',
    //'SettingsPermission' => 'Garden.Settings.Manage',
+   'License'=>"GNU GPL2",
    'Author' => "VrijVlinder",
    
 );
