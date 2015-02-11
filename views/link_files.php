@@ -60,7 +60,7 @@
                         $PermissionName = "Vanilla.Comments.Edit";
    
                      if ($IsOwner || Gdn::Session()->CheckPermission($PermissionName, TRUE, 'Category', $this->Data('Discussion.PermissionCategoryID')))
-                        $Actions = ConcatSep(' | ', $Actions, '<a class="DeleteFile" href="'.Url("/plugin/uploader/delete/{$Media->MediaID}").'"><span>'.T('Delete').'</span></a>');
+                        $Actions = ConcatSep(' | ', $Actions, '<a class="DeleteFile" href="'.Url("/plugin/Uploader/delete/{$Media->MediaID}").'"><span>'.T('Delete').'</span></a>');
    
                      if ($Actions)
                         echo '<div>', $Actions, '</div>';

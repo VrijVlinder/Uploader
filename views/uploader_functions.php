@@ -55,7 +55,7 @@ function MediaThumbnail($Media, $Data = FALSE) {
 function DefaultMediaThumbnail($Media) {
   $Result = '<span class="Thumb-Default">'.
    '<span class="Thumb-Extension">'.pathinfo($Media['Name'], PATHINFO_EXTENSION).'</span>'.
-   Img('/plugins/Uploader/images/file.png', array('class' => 'ImageThumbnail', 'height' => GetValue('ThumbHeight', $Media))).
+   Img('/plugins/Uploader/design/images/file.png', array('class' => 'ImageThumbnail', 'height' => GetValue('ThumbHeight', $Media))).
    '</span>';
    
    return $Result;

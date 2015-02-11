@@ -3,7 +3,7 @@
 // Define the plugin:
 $PluginInfo['Uploader'] = array(
    'Description' => 'Upload and attach files and images. Based on the classic FileUpload plugin by @Todd',
-   'Version' => '1.0',
+   'Version' => '1.1',
    'RequiredTheme' => FALSE,
    'RequiredPlugins' => FALSE,
    'HasLocale' => FALSE,
