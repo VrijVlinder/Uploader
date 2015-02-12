@@ -86,8 +86,8 @@ class UploaderPlugin extends Gdn_Plugin {
     * Adds a settings page to edit the allowed file extensions
     */
     public function SettingsController_Uploader_Create($Sender) {
-        $Sender->Permission('Garden.Admin.Only');
-        $Sender->AddSideMenu('Garden.Settings.Manage');
+        $Sender->Permission('Garden.Settings.Manage');
+        $Sender->AddSideMenu('/settings/Uploader');
         $Sender->SetData('Title', T('Uploader Configuration'));
 
         $Conf = new ConfigurationModule($Sender);
