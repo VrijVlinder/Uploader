@@ -11,8 +11,8 @@ $PluginInfo['Uploader'] = array(
    'RegisterPermissions' => array(
    'Plugins.Attachments.Upload.Allow' => 'Garden.Profiles.Edit',
    'Plugins.Attachments.Download.Allow' => 'Garden.Profiles.Edit'),
-   //'SettingsUrl' => '/dashboard/plugin/Uploader',
-   //'SettingsPermission' => 'Garden.Settings.Manage',
+   'SettingsUrl' => '/settings/Uploader',
+   'SettingsPermission' => 'Garden.Settings.Manage',
    'License'=>"GNU GPL2",
    'Author' => "VrijVlinder",
    
@@ -81,6 +81,35 @@ class UploaderPlugin extends Gdn_Plugin {
       }
       return $MediaModel;
    }
+
+   /**
+    * Adds a settings page to edit the allowed file extensions
+    */
+    public function SettingsController_Uploader_Create($Sender) {
+        $Sender->Permission('Garden.Settings.Manage');
+        $Sender->AddSideMenu('/settings/Uploader');
+        $Sender->SetData('Title', T('Uploader Configuration'));
+
+        $Conf = new ConfigurationModule($Sender);
+        $Conf->Schema(array(
+            'AllowedFileExtensions' => array(
+                'Control' => 'textbox',
+                'LabelCode' => 'Allowed File Extensions (comma separated)'
+            ))
+        );
+
+        if ($Sender->Form->AuthenticatedPostBack()) {
+            $Values = $Sender->Form->FormValues();
+            $Extensions = array_map('trim', explode(',', val('AllowedFileExtensions', $Values)));
+            SaveToConfig('Garden.Upload.AllowedFileExtensions', $Extensions);
+            $Sender->InformMessage(T('Your settings have been saved.'));
+        } else {
+            $List = implode(', ', C('Garden.Upload.AllowedFileExtensions'));
+            $Sender->Form->SetValue('AllowedFileExtensions', $List);
+        }
+
+        $Conf->RenderAll();
+    }
 
    /**
     * Adds "Media" menu option to the Forum menu on the dashboard.
